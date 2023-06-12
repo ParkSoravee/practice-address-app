@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:practices/screens/screens.dart';
 
 import '../blocs/location_bloc/location_bloc.dart';
-import '../widgets/widgets.dart';
+import 'screens.dart';
 
 class AmphureScreen extends StatelessWidget {
   const AmphureScreen({super.key});

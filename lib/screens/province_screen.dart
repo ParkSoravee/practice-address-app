@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:practices/blocs/location_bloc/location_bloc.dart';
-import 'package:practices/screens/screens.dart';
 
+import '../blocs/location_bloc/location_bloc.dart';
 import '../blocs/province_search_bloc/province_search_bloc.dart';
 import '../widgets/widgets.dart';
+import 'screens.dart';
 
 class ProvinceScreen extends StatefulWidget {
   const ProvinceScreen({super.key});

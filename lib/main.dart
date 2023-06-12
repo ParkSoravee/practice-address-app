@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:practices/blocs/location_bloc/location_bloc.dart';
-import 'package:practices/blocs/province_search_bloc/province_search_bloc.dart';
-import 'package:practices/config/app_route.dart';
-import 'package:practices/config/theme.dart';
 
 import 'blocs/bloc_observer.dart';
+import 'blocs/location_bloc/location_bloc.dart';
+import 'blocs/province_search_bloc/province_search_bloc.dart';
+import 'config/app_route.dart';
+import 'config/theme.dart';
 import 'repositories/location_repository.dart';
 import 'screens/screens.dart';
 

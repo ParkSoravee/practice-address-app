@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:practices/blocs/province_search_bloc/province_search_bloc.dart';
 
 import '../blocs/location_bloc/location_bloc.dart';
+import '../blocs/province_search_bloc/province_search_bloc.dart';
 
 class SearchBox extends StatefulWidget {
   const SearchBox({
@@ -18,7 +18,7 @@ class _SearchBoxState extends State<SearchBox> {
 
   @override
   void initState() {
-    context.read<ProvinceSearchBloc>().add(ProvinceSearchChanged(''));
+    context.read<ProvinceSearchBloc>().add(const ProvinceSearchChanged(''));
     _focusnode = FocusNode();
     super.initState();
   }
@@ -40,6 +40,7 @@ class _SearchBoxState extends State<SearchBox> {
           ),
           child: TextFormField(
             key: const Key('province_search'),
+            cursorColor: Theme.of(context).primaryColor,
             decoration: InputDecoration(
               label: const Text('ค้นหาจังหวัด'),
               border: OutlineInputBorder(
