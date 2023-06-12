@@ -39,6 +39,7 @@ class _SearchBoxState extends State<SearchBox> {
             vertical: 20,
           ),
           child: TextFormField(
+            key: const Key('province_search'),
             decoration: InputDecoration(
               label: const Text('ค้นหาจังหวัด'),
               border: OutlineInputBorder(

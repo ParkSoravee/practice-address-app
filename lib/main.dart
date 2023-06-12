@@ -8,7 +8,6 @@ import 'package:practices/config/theme.dart';
 import 'blocs/bloc_observer.dart';
 import 'repositories/location_repository.dart';
 import 'screens/screens.dart';
-import 'widgets/widgets.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
@@ -35,13 +34,24 @@ class MyApp extends StatelessWidget {
             create: (_) => ProvinceSearchBloc(),
           ),
         ],
-        child: MaterialApp(
-          onGenerateRoute: AppRoute().onGenerateRoute,
-          title: 'Address App',
-          theme: theme(),
-          home: const HomeScreen(),
-        ),
+        child: const MyAppView(),
       ),
+    );
+  }
+}
+
+class MyAppView extends StatelessWidget {
+  const MyAppView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      onGenerateRoute: AppRoute().onGenerateRoute,
+      title: 'Address App',
+      theme: theme(),
+      home: const HomeScreen(),
     );
   }
 }
