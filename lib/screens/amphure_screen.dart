@@ -39,6 +39,7 @@ class AmphureScreen extends StatelessWidget {
           Expanded(
             child: BlocBuilder<LocationBloc, LocationState>(
               builder: (context, state) {
+                
                 return state.amphureList.isNotEmpty
                     ? ListView.separated(
                         itemCount: state.amphureList.length,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:practices/blocs/select_province/select_province_bloc.dart';
 
 import '../blocs/location_bloc/location_bloc.dart';
 import '../blocs/province_search_bloc/province_search_bloc.dart';
@@ -46,50 +47,46 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
           const SearchBox(),
           // list
           Expanded(
-            child: BlocBuilder<LocationBloc, LocationState>(
-              buildWhen: (previous, current) =>
-                  previous.provinceList != current.provinceList,
+            child: BlocBuilder<SelectProvinceBloc, SelectProvinceState>(
               builder: (_, state) {
-                return BlocBuilder<ProvinceSearchBloc, ProvinceSearchState>(
-                  builder: (_, provinceSearchState) {
-                    final provinceList = state.provinceList
-                        .where((element) =>
-                            element.name.contains(provinceSearchState.str))
-                        .toList();
-                    return provinceList.isNotEmpty
-                        ? ListView.separated(
-                            itemCount: provinceList.length,
-                            // padding: const EdgeInsets.symmetric(horizontal: 16),
-                            itemBuilder: (context, index) => ListTile(
-                              title: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0,
-                                ),
-                                child: Text(provinceList[index].name),
+                if (state is SelectProvinceSearchResultState) {
+                  final provinceList = state.results;
+
+                  return provinceList.isNotEmpty
+                      ? ListView.separated(
+                          itemCount: provinceList.length,
+                          // padding: const EdgeInsets.symmetric(horizontal: 16),
+                          itemBuilder: (context, index) => ListTile(
+                            title: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
                               ),
-                              onTap: () {
-                                FocusScope.of(context).unfocus();
-                                context.read<LocationBloc>().add(
-                                      LocationChanged(
-                                        selectedProvince: provinceList[index],
-                                      ),
-                                    );
-                                Navigator.pushNamed(
-                                    context, AmphureScreen.routeName);
-                              },
+                              child: Text(provinceList[index].name),
                             ),
-                            separatorBuilder: (context, index) {
-                              return const Divider(
-                                height: 0,
-                                indent: 16,
-                              );
+                            onTap: () {
+                              FocusScope.of(context).unfocus();
+                              context.read<LocationBloc>().add(
+                                    LocationChanged(
+                                      selectedProvince: provinceList[index],
+                                    ),
+                                  );
+                              Navigator.pushNamed(
+                                  context, AmphureScreen.routeName);
                             },
-                          )
-                        : const Center(
-                            child: Text('empty'),
-                          );
-                  },
-                );
+                          ),
+                          separatorBuilder: (context, index) {
+                            return const Divider(
+                              height: 0,
+                              indent: 16,
+                            );
+                          },
+                        )
+                      : const Center(
+                          child: Text('empty'),
+                        );
+                } else {
+                  return Container();
+                }
               },
             ),
           ),

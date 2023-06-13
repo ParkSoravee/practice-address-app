@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'blocs/bloc_observer.dart';
 import 'blocs/location_bloc/location_bloc.dart';
 import 'blocs/province_search_bloc/province_search_bloc.dart';
+import 'blocs/select_province/select_province_bloc.dart';
 import 'config/app_route.dart';
 import 'config/theme.dart';
 import 'repositories/location_repository.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
               ..add(const LocationProvinceLoaded()),
           ),
           BlocProvider(
-            create: (_) => ProvinceSearchBloc(),
+            create: (_) => SelectProvinceBloc(locationRepository),
           ),
         ],
         child: const MyAppView(),

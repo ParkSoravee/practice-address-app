@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:practices/blocs/select_province/select_province_bloc.dart';
 
 import '../blocs/location_bloc/location_bloc.dart';
 import '../blocs/province_search_bloc/province_search_bloc.dart';
@@ -18,7 +19,7 @@ class _SearchBoxState extends State<SearchBox> {
 
   @override
   void initState() {
-    context.read<ProvinceSearchBloc>().add(const ProvinceSearchChanged(''));
+    context.read<SelectProvinceBloc>().add(const SelectProvinceSearch(''));
     _focusnode = FocusNode();
     super.initState();
   }
@@ -76,8 +77,8 @@ class _SearchBoxState extends State<SearchBox> {
             onChanged: (value) {
               setState(() {
                 context
-                    .read<ProvinceSearchBloc>()
-                    .add(ProvinceSearchChanged(value));
+                    .read<SelectProvinceBloc>()
+                    .add(SelectProvinceSearch(value));
               });
             },
           ),
